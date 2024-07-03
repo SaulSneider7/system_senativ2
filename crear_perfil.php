@@ -8,6 +8,7 @@
         $nombre_session = $_SESSION['nombre'];
         $id_session = $_SESSION['id_session'];
     };
+
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +21,22 @@
 </head>
 
 <body>
-    
+
     <?php include_once 'header.php'; ?>
 
-    <h1>Bienvenido <?php echo $nombre_session;?></h1>
+    <h1>Crear Perfil</h1>
+
+    <form action="">
+        <label for="">Perfil:</label>
+        <input type="text" id="nombre_perfil">
+        <button type="button" id="btn_crear_perfil">Crear</button>
+    </form>
 
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Login JS -->
-    <script src="login.js?v=<?php echo rand(); ?>"></script>
+    <!-- Perfil JS -->
+    <script src="perfil.js?v=<?php echo rand(); ?>"></script>
 </body>
 
 </html>

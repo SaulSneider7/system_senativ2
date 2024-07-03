@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once '../config.php';
 
     //Respuesta en Json
@@ -23,6 +24,8 @@
                 $id_BD = $row['id_usuario'];
 
                 if ($password_BD == $pass) {
+                    $_SESSION['id_session'] = $id_BD;
+                    $_SESSION['nombre'] = $nombre_BD;
                     echo json_encode([
                         'estado' => 'ok',
                         'mensaje' => 'El usuario existe'
@@ -45,7 +48,10 @@
             
             break;
         case 'cerrar_sesion':
-            # code...
+            session_destroy();
+            echo json_encode([
+                'mensaje' => 'session eliminada'
+            ]);
             break;
     }
 ?>
