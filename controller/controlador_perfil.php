@@ -26,10 +26,41 @@
             }
             break;
         case 'editarPerfil':
-            //code
+            $nombre_perfil = $_POST['nombre'];
+            $id_perfil = $_POST['id_perfil'];
+
+            $sql = "UPDATE perfiles SET nombre = '$nombre_perfil' WHERE id_perfil = '$id_perfil'";
+            $query = mysqli_query($conexion, $sql);
+
+            if ($query) {
+                echo json_encode([
+                    "estado" => "ok",
+                    "mensaje" => "Se ha actualizado el perfil"
+                ]);
+            } else {
+                echo json_encode([
+                    "estado" => "error",
+                    "mensaje" => "Error: no se puedo actualizar el perfil"
+                ]);
+            }
             break;
         case 'eliminarPerfil':
-            //code
+            $id_perfil = $_POST['id_perfil'];
+
+            $sql = "DELETE FROM perfiles WHERE id_perfil = '$id_perfil'";
+            $query = mysqli_query($conexion, $sql);
+
+            if ($query) {
+                echo json_encode([
+                    "estado" => "ok",
+                    "mensaje" => "Se ha eliminado el perfil"
+                ]);
+            } else {
+                echo json_encode([
+                    "estado" => "error",
+                    "mensaje" => "Error: no se puedo eliminar el perfil"
+                ]);
+            }
             break;
     }
 ?>

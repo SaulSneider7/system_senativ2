@@ -1,4 +1,5 @@
-$("#btn_ingresar").click(function(){
+console.log("Funciones: login.js");
+("#btn_ingresar").click(function(){
     let sakjhskja = $("#email").val();
     let ijahsijas = $("#password").val();
 

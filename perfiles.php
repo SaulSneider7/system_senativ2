@@ -1,13 +1,6 @@
 <?php
     include_once 'config.php';
-    session_start();
-    
-    if (!isset($_SESSION['id_session'])) {
-        header ('location: login.php');
-    } else {
-        $nombre_session = $_SESSION['nombre'];
-        $id_session = $_SESSION['id_session'];
-    };
+    include_once 'session.php';
 
 
     //Lista de perfiles
@@ -44,9 +37,9 @@
                 <tr>
                     <td> <?php echo $perfil_dato['nombre'] ?> </td>
                     <td>
-                        <a href="#">Ver</a>
-                        <a href="#">Editar</a>
-                        <a href="#">Eliminar</a>
+                        <a href="ver_perfil.php?id=<?php echo $perfil_dato['id_perfil']?>">Ver</a>
+                        <a href="editar_perfil.php?id=<?php echo $perfil_dato['id_perfil']?>">Editar</a>
+                        <a href="#" onclick="eliminar_perfil('<?php echo $perfil_dato['id_perfil']?>')">Eliminar</a>
                     </td>
                 </tr>    
             <?php
@@ -59,8 +52,8 @@
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Login JS -->
-    <script src="login.js?v=<?php echo rand(); ?>"></script>
+    <!-- Perfil JS -->
+    <script src="perfil.js?v=<?php echo rand(); ?>"></script>
 </body>
 
 </html>
