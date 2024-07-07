@@ -1,6 +1,6 @@
 <?php
     include_once '../config.php';
-
+    date_default_timezone_set('America/Lima');
     //Respuesta en Json
     header('Content-Type: aplication/json');
 
@@ -17,7 +17,6 @@
             $password = $_POST['password'];
             $direccion = $_POST['direccion'];
             //Obtenemos la fecha actual
-            date_default_timezone_set('America/Lima');
             $fechaActual = date("Y-m-d H:i:s");
 
             $sql = "INSERT INTO usuarios (id_perfil, nombre, apellido, email, DNI, password, direccion, fecha_creacion, fecha_actualizacion) VALUES ('$id_perfil', '$nombre', '$apellido', '$email', '$dni', '$password', '$direccion', '$fechaActual', '$fechaActual')";
@@ -46,7 +45,6 @@
             $direccion = $_POST['direccion'];
 
             //Obtenemos la fecha actual
-            date_default_timezone_set('America/Lima');
             $fechaActual = date("Y-m-d H:i:s");
 
             $sql = "UPDATE usuarios SET id_perfil = '$id_perfil', nombre = '$nombre', apellido = '$apellido', email = '$email', DNI = '$dni', direccion = '$direccion', fecha_actualizacion = '$fechaActual' WHERE id_usuario = '$id_usuario'";
@@ -66,20 +64,20 @@
             }
             break;
         case 'eliminarUsuario':
-            $id_perfil = $_POST['id_perfil'];
+            $id_usuario = $_POST['id_usuario'];
 
-            $sql = "DELETE FROM perfiles WHERE id_perfil = '$id_perfil'";
+            $sql = "DELETE FROM usuarios WHERE id_usuario = '$id_usuario'";
             $query = mysqli_query($conexion, $sql);
 
             if ($query) {
                 echo json_encode([
                     "estado" => "ok",
-                    "mensaje" => "Se ha eliminado el perfil"
+                    "mensaje" => "Se ha eliminado el usuarios"
                 ]);
             } else {
                 echo json_encode([
                     "estado" => "error",
-                    "mensaje" => "Error: no se puedo eliminar el perfil"
+                    "mensaje" => "Error: no se puedo eliminar el usuario"
                 ]);
             }
             break;

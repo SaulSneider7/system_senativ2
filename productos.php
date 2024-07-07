@@ -22,8 +22,8 @@
     
     <?php include_once 'header.php'; ?>
 
-    <h1>Gestion de Usuarios</h1>
-    <a href="crear_usuario.php">Crear Usuario</a>
+    <h1>Gestion de Productos</h1>
+    <a href="crear_productos.php">Crear Producto</a>
     <table border="1">
         <thead>
             <tr>

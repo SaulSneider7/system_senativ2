@@ -59,3 +59,28 @@ $('#btn_actualizar_usuario').click(function () {
         }
     })
 });
+
+
+//Eliminar Usuario
+function eliminar_usuario(id) {
+    $.ajax({
+        type: "POST",
+        url: "controller/controlador_usuario.php",
+        dataType: "json",
+        data: {
+            action: "eliminarUsuario",
+            id_usuario : id
+        },
+        success: function (respuesta) {
+            console.log(respuesta);
+            if (respuesta.estado == 'ok') {
+                window.location.href = 'usuarios.php';
+            } else {
+                alert(respuesta.mensaje);
+            }
+        },
+        error: function (respuesta) {
+            console.log(respuesta);
+        }
+    })
+};
